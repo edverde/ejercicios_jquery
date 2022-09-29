@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AF2 - UF1306 Selectores y efectos 1 jQuery</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- ------------------------- animacion anclas ------------------------------------- -->
+	<script>
+		$(document).ready(function() {
+			$('a[href^="#"]').click(function() {
+		    var destino = $(this.hash);
+		    if (destino.length == 0) {
+		      destino = $('a[name="' + this.hash.substr(1) + '"]');
+		    }
+		    if (destino.length == 0) {
+		      destino = $('html');
+		    }
+		    $('html, body').animate({ scrollTop: destino.offset().top - 225 }, 1000);
+		    return false;
+		  });
+		});
+	</script>	
+	<style>
+	/*--------------------font-------------------------------------------------------------------*/
+	@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;700&display=swap');
+	/*-----------------------reset----------------------------------------------------------*/
+	*{
+		padding: 0px;
+		margin: 0px;
+		box-sizing: border-box;
+	}
+	/*-----------------------------------------Raíz--------------------------------------------*/
+	:root{
+		--primario:#eaece5; /*blanco roto*/
+		--secundario:#b2c2bf; /*azúl grisáceo*/
+		--terciario:#3b3a30; /*verde oscuro*/
+		--cuaternario:#c0ded9; /*verde claro*/
+	}
+	/*--------------------------------Etiquetas de título--------------------------------*/
+	h2, h3, p {
+		color:var(--terciario);
+		padding: 20px;
+		width: 80%;
+		margin:auto;
+	}
+	/*-------------------------------Enlaces--------------------------------------------*/
+	a{
+		color:var(--terciario);
+
+	}
+	a:hover{
+		
+		color:#0d0d0d;
+	}
+	/*-----------------------------------borde h2---------------------------------*/
+	.borde {
+		border-top: 1px solid var(--terciario); 
+		width: 80%; 
+		margin: auto; 
+		padding: 40px;
+	}
+	/*--------------------------------- listas ---------------------------------- */
+	ol{
+		width: 30px; 
+		margin: auto;
+		font-size: 1rem;		
+	}
+	/*------------------------------------tablas----------------------------------------*/
+	table{
+		width: 80%;
+		margin:auto;
+		border: 2px solid var(--terciario);
+		border-collapse: collapse;
+	}
+	td {
+		padding: 20px;
+	}	
+	/*-------------------------------boton----------------------------------------*/
+	button {
+		width: 100px;
+		display: inline-block;
+		padding:10px;
+		border-radius: 4px;
+		background-color: var(--terciario);
+		cursor: pointer;
+		text-decoration: none;
+		text-align: center;
+		margin:20px auto 20px;
+		border: none;
+		color:var(--primario);
+	}
+	button:hover{
+		background-color: #0d0d0d;
+		transition: 1s;
+	}
+	/*------------------------------body---------------------------------*/
+	body{
+		font-family: 'Arimo', sans-serif;
+		background-color: var(--secundario);
+		text-align: center;	
+	}
+	/*------------------------header----------------------------------*/
+	header{
+		background-color: var(--terciario);
+		padding: 20px 20px 0px;
+		color: #f0f0f0;
+		position: sticky;
+		top:0;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		z-index: 1000;
+	}
+	.fotoEd{		  	
+    	border-radius:50px;
+	}
+	/*---------------------------------------menu------------------------------*/
+	#menu {	
+		background-color: var(--terciario);
+		position: sticky;
+		top: 170px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 20px;	
+		z-index: 1000;			
+	}
+	#menu a{
+		text-decoration: none;
+		color:var(--primario);
+		display: block;
+		width: 100px;
+		border:1px solid var(--primario);
+		margin-right: 10px;
+	}
+	#menu a:hover{
+		background-color: #0d0d0d;
+		transition: 1s;
+	}
+	/*------------------------main------------------------------------------------*/
+	main{
+		width: 80%;
+		margin: auto;
+		padding: 60px 0px 60px;	
+		background-color: var(--primario);			
+		/*background-image: url(img/fondo.jpg);
+		background-attachment: scroll;
+		background-size: cover;*/
+	}		
+	/*------------------------------------ footer ----------------------------------------------*/
+	footer {
+		padding: 80px;
+		background-color: var(--terciario);
+		color:var(--primario);
+	}
+	</style>
+</head>
+<body>
+	<!-- --------------------------------------------header-------------------------------------- -->
+<header>
+	<img src="img/logo.png" alt="logoJquery" width="150">
+	<h1>AVC4 - UF1306 Texto Validación</h1>
+	<div>
+		<figure>
+		<img src="img/ed.jpg" alt="alumno" class="fotoEd" width="100">
+		<figcaption>Eduard Valls Roca</figcaption>
+		</figure>
+		<!-- <span class="icon_burger">&#9776;</span> -->
+	</div>
+</header>
+<!-- --------------------------------Navegador------------------------------- -->
+<nav id="menu">
+	<a href="#ej1">EJ.1</a>
+	<a href="#ej2">EJ.2</a>
+	<a href="#ej3">EJ.3</a>
+	<a href="#ej4">EJ.4</a>
+	<!-- <a href="#ej5">EJ.5</a>
+	<a href="#ej6">EJ.6</a>
+	<a href="#ej7">EJ.7</a>
+	<a href="#ej8">EJ.8</a>
+	<a href="#ej9">EJ.9</a>
+	<a href="#ej10">EJ.10</a>
+	<a href="#ej11">EJ.11</a>
+	<a href="#ej12">EJ.12</a>	
+	<a href="#ej13">EJ.13</a>	
+	<a href="#ej14">EJ.14</a>		 -->
+</nav>
+<main>	
+	<!-- ---------------------------------- ejercicio 1 ------------------------------------------ -->
+	<section id="ej1">
+		<h2>1.- Crea una variable que almacene la frase “Quien quiere hacer algo encuentra una forma, quien no quiere hacerlo encuentra una excusa”</h2>
+		<h3>a) ¿Cuántos caracteres tiene la frase?</h3>
+		<button class="btn1_1">Solución</button>
+		<h3>b) Usando indexOf(). ¿En qué índice del array está la primera palabra “encuentra”?</h3>
+		<button class="btn1_2">Solución</button>
+		<h3>c) Usando lastIndexOf(). ¿En qué índice del array está  última palabra “encuentra”?</h3>
+		<button class="btn1_3">Solución</button>
+		<script>
+			let frase = 'Quien quiere hacer algo encuentra una forma, quien no quiere hacerlo encuentra una excusa'
+			$('.btn1_1').click(function(){
+				alert('la frase tiene '+frase.length+' carácteres.');
+			})
+			$('.btn1_2').click(function(){
+				alert(frase.indexOf('encuentra'));
+			})
+			$('.btn1_3').click(function(){
+				alert(frase.lastIndexOf('encuentra'))
+			})		
+		</script>
+	</section>
+	<!-- ---------------------------------- ejercicio 2 ------------------------------------------ -->
+	<section id="ej2">
+		<h2 class="borde">2. – Pregunta al usuario por su email mediante un prompt. Valida ese e-mail y avisa al usuario cuando no parezca un e-mail válido.</h2>
+		<button class="btn2_1">Solución</button>
+		<script>
+			$('.btn2_1').click(function(){
+				let correo = prompt('Introduce tu e-Mail')
+				while( correo.indexOf('@')== -1 || correo.indexOf('.')==-1){
+					correo = prompt('No parece un e-Mail correcto, introduce un e-Mail válido.')
+				}
+				alert('Tu e-Mail es correcto')
+			})
+		</script>
+	</section>
+	<!-- ---------------------------------- ejercicio 3 ------------------------------------------ -->
+	<section id="ej3">
+		<h2 class="borde"> 3.- Crea un formulario con un campo de tipo text donde se pida el e-mail. Al salir del campo de formulario hemos de avisar con una ventana emergente cuando el correo sea inválido poniendo en foco de nuevo en el campo de texto.</h2>
+		<form action="" onsubmit="envio()" style="margin-bottom: 40px;">
+			<input type="text" placeholder="e-Mail" class="mail">
+			<input type="submit">
+		</form>
+		<script>
+			$('.mail').blur(function(){
+				if($('.mail').val().indexOf('@')==-1 || $('.mail').val().indexOf('.')==-1){
+					alert('No parece un e-Mail correcto, introduce un e-Mail válido.')
+					setTimeout(function(){
+						$('.mail').focus()}, 3000);		
+					
+				}
+				else{
+					alert('Tu e-Mail es correcto')
+				}
+			})
+			
+		</script>
+	</section>
+	<!-- ---------------------------------- ejercicio 4 ------------------------------------------ -->
+	<section id="ej4">
+		<h2 class="borde"> 4.- Crea una variable párrafo con el texto:</h3>
+		<p class="matrix">“Esta es tu última oportunidad. Después de esto, no hay vuelta atrás. Tomas la píldora azul: la historia termina, te despiertas en tu cama y crees lo que quieras creer. Tomas la píldora roja, te quedas en el País de las Maravillas y te muestro lo profundo que es la madriguera del conejo”.</p>
+		<h3> a) ¿Cuántos caracteres tiene el párrafo?</h3>
+		<button class="btn4_1">Solución</button>
+		<h3> b) En qué posición está la palabra “azul”</h3>
+		<button class="btn4_2">Solución</button>
+		<h3> c) Encuentra la posición de la primera palabra “Tomas”</h3>
+		<button class="btn4_3">Solución</button>
+		<h3> d) Encuentra la posición de la última palabra “Tomas”</h3>
+		<button class="btn4_4">Solución</button>
+		<h3> e) Sustituye “madriguera del conejo” por “Guarida del oso”</h3>
+		<button class="btn4_5">Solución</button>
+		<script>
+			let parrafo = ('<p>“Esta es tu última oportunidad. Después de esto, no hay vuelta atrás. Tomas la píldora azul: la historia termina, te despiertas en tu cama y crees lo que quieras creer. Tomas la píldora roja, te quedas en el País de las Maravillas y te muestro lo profundo que es la madriguera del conejo”.</p>')
+			$('.btn4_1').click(function(){
+				alert('El párrafo tiene '+parrafo.length+' carácteres.')
+			}) 
+			$('.btn4_2').click(function(){
+				alert(`La palabra Azul se situa en la posicion ${parrafo.indexOf('azul')}`)
+			}) 
+			$('.btn4_3').click(function(){
+				alert(`La primera palabra "Tomas" se situa en la posicion ${parrafo.indexOf('Tomas')}`)
+			}) 
+			$('.btn4_4').click(function(){
+				alert(`La última palabra "Tomas" se situa en la posicion ${parrafo.lastIndexOf('Tomas')}`)
+			})
+			
+			$('.btn4_5').click(function(){				
+				let parrafonuevo = $('.matrix').html().replace('madriguera del conejo','guarida del oso')
+				alert(parrafonuevo)
+			})
+			// $('.btn4_5').click(function(){
+			// 	const frasematrix = document.querySelector('.matrix');
+			// 	let nuevoparrafo = frasematrix.innerHTML.replace('madriguera del conejo','guarida del oso')
+			// 	alert(nuevoparrafo) 0
+			// })
+		</script>
+	</section>	
+</main>
+<footer>
+	<small>31 de Mayo de 2021</small>
+</footer>
+</body>
+</html>

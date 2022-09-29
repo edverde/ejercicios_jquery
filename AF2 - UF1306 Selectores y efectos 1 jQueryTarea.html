@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AF2 - UF1306 Selectores y efectos 1 jQuery</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- ------------------------- animacion anclas ------------------------------------- -->
+	<script>
+		$(document).ready(function() {
+			$('a[href^="#"]').click(function() {
+		    var destino = $(this.hash);
+		    if (destino.length == 0) {
+		      destino = $('a[name="' + this.hash.substr(1) + '"]');
+		    }
+		    if (destino.length == 0) {
+		      destino = $('html');
+		    }
+		    $('html, body').animate({ scrollTop: destino.offset().top - 225 }, 1000);
+		    return false;
+		  });
+		});
+	</script>	
+	<style>
+	/*--------------------font-------------------------------------------------------------------*/
+	@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;700&display=swap');
+	/*-----------------------reset----------------------------------------------------------*/
+	*{
+		padding: 0px;
+		margin: 0px;
+		box-sizing: border-box;
+	}
+	/*-----------------------------------------Raíz--------------------------------------------*/
+	:root{
+		--primario:#eaece5; /*blanco roto*/
+		--secundario:#b2c2bf; /*azúl grisáceo*/
+		--terciario:#3b3a30; /*verde oscuro*/
+		--cuaternario:#c0ded9; /*verde claro*/
+	}
+	/*--------------------------------Etiquetas de título--------------------------------*/
+	h2, h3, p {
+		color:var(--terciario);
+		padding: 20px;
+		width: 80%;
+		margin:auto;
+	}
+	/*--------------------------------- listas ---------------------------------- */
+	ol{
+		width: 90px; 
+		margin: auto;
+		font-size: 1rem;		
+	}
+	/*------------------------------------tablas----------------------------------------*/
+	table{
+		width: 80%;
+		margin:auto;
+		border: 2px solid var(--terciario);
+		border-collapse: collapse;
+	}
+	td {
+		padding: 20px;
+	}	
+	/*-------------------------------boton----------------------------------------*/
+	button {
+		width: 100px;
+		display: inline-block;
+		padding:10px;
+		border-radius: 4px;
+		background-color: var(--terciario);
+		cursor: pointer;
+		text-decoration: none;
+		text-align: center;
+		margin:20px auto 20px;
+		border: none;
+		color:var(--primario);
+	}
+	button:hover{
+		background-color: #0d0d0d;
+		transition: 1s;
+	}
+	/*------------------------------body---------------------------------*/
+	body{
+		font-family: 'Arimo', sans-serif;
+		background-color: var(--secundario);
+		text-align: center;	
+	}
+	/*------------------------header----------------------------------*/
+	header{
+		background-color: var(--terciario);
+		padding: 20px 20px 0px;
+		color: #f0f0f0;
+		position: sticky;
+		top:0;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	.fotoEd{
+		width:100px;    	
+    	border-radius:50px;
+	}
+	/*---------------------------------------menu------------------------------*/
+	#menu {	
+		background-color: var(--terciario);
+		position: sticky;
+		top: 170px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 20px;		
+	}
+	#menu a{
+		text-decoration: none;
+		color:var(--primario);
+		display: block;
+		width: 100px;
+		border:1px solid var(--primario);
+		margin-right: 10px;
+	}
+	#menu a:hover{
+		background-color: #0d0d0d;
+		transition: 1s;
+	}
+	/*------------------------main------------------------------------------------*/
+	main{
+		width: 80%;
+		margin: auto;
+		padding: 60px 0px 60px;	
+		background-color: var(--primario);			
+	}	
+	/*-------------------------ej1--------------------------------------*/
+	#encabezado{
+		width: 75%;
+		margin: auto;
+		padding: 50px;
+		background-color: var(--secundario);
+	}
+	#cabezaEj1{
+		background-color: var(--terciario);
+		padding: 50px;
+		color: #f0f0f0;
+		width: 75%;
+		margin: auto;
+	}
+	/*----------------------------ejercicio10 Formulario----------------------------*/
+	#formulario {
+		border-radius: 5px;
+  		background-color: var(--secundario);
+  		padding: 20px;
+  		
+  		text-align: left;
+  		width: 50%;
+  		margin: 40px auto;
+	}
+	input[type=text], input[type=email], textarea {
+		width: 100%;
+		padding: 12px 20px;
+		margin: 8px 0;
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 4px;		
+	}
+	input[type=submit] {
+  		width: 150px;
+  		background-color: var(--terciario);
+  		color: var(--primario);
+  		padding: 14px 20px;  		
+  		border: none;
+  		border-radius: 4px;
+  		cursor: pointer;
+	}
+	input[type=submit]:hover {
+  		background-color: #0d0d0d;
+	}
+	/*----------------------------------------contenedor ej11---------------------------------*/
+	.contenedorFlex {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.ej_11 {
+		background-color: var(--secundario);
+		border-radius: 4px;
+		width: 30%;
+		margin: auto;
+		padding:20px;		
+	}
+	/*------------------------------------ footer ----------------------------------------------*/
+	footer {
+		padding: 80px;
+		background-color: var(--terciario);
+		color:var(--primario);
+	}
+	</style>
+</head>
+<body>
+	<!-- --------------------------------------------header-------------------------------------- -->
+<header>
+	<img src="img/logo.png" alt="logoJquery" width="150px;">
+	<h1>AF2 - UF1306 Selectores y efectos 1 jQuery</h1>
+	<figure>
+		<img src="img/ed.jpg" alt="alumno" class="fotoEd">
+		<figcaption>Eduard Valls Roca</figcaption>
+	</figure>
+</header>
+<!-- --------------------------------Navegador------------------------------- -->
+<nav id="menu">
+	<a href="#ejercicio1">EJ.1</a>
+	<a href="#ej2">EJ.2</a>
+	<a href="#ej3">EJ.3</a>
+	<a href="#ej4">EJ.4</a>
+	<a href="#ej5">EJ.5</a>
+	<a href="#ej6">EJ.6</a>
+	<a href="#ej7">EJ.7</a>
+	<a href="#ej8">EJ.8</a>
+	<a href="#ej9">EJ.9</a>
+	<a href="#ej10">EJ.10</a>
+	<a href="#ej11">EJ.11</a>	
+</nav>
+<main>	
+	<!-- ------------------------------------------ejercicio 1--------------------------------------- -->
+<section class="ej1" id="ejercicio1">
+	<h2>1. Crear un documento HTML con un encabezado, dos párrafos y un botón.</h2>
+	<div id="cabezaEj1" class="intro">
+		<h1>Encabezado</h1>			
+	</div>
+	<div id="encabezado">			
+		<p class="intro">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis adipisci optio dolores minima laborum repellat non doloremque, similique repellendus aperiam eius eos voluptates sapiente corporis rem quod minus. Reiciendis, perspiciatis.</p>
+		<p style="padding-bottom: 40px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam perferendis corporis enim omnis veniam natus numquam commodi magnam excepturi quaerat, pariatur facere tenetur similique cumque, ullam perspiciatis nobis accusantium dicta?</p>
+		<button class="botonGeneral">Click</button>
+	</div>	
+	<section id="ej1_1">
+		<h3 style="padding-top: 40px;">Al pulsar el botón mediante el selector $(“*”) se debe ocultar todo. Método hide()</h3>
+		<button class="ej1_1">Click</button>
+		<script>
+			$('.ej1_1').click(function(){			
+				$('.ej1').hide()
+			})
+		</script>	
+	</section>
+	<section id="ej1_2">
+		<h3 style="padding-top: 20px"> Ahora, al pulsar el botón debe ocultarse solo el botón.</h3>
+		<button class="ej1_2">Click</button>
+		<script>
+			$('.ej1_2').click(function(){
+				$('.botonGeneral').hide()
+			})
+		</script>
+	</section>
+	<section id="ej1_3">
+		<h3>Suponemos que el encabezado y el primer párrafo tienen el atributo class=”intro”. Ocúltalos al hacer clic en el botón</h3>
+		<button class="ej1_3">Click</button>
+		<script>
+			$('.ej1_3').click(function(){
+				$('.intro').hide()
+			})
+		</script>
+	</section>
+	<section id="ej1_4">
+		<h3>En esta ocasión, oculta el primer párrafo mediante el selector. p:first</h3>
+		<button class="ej1_4">Click</button>
+		<script>
+			$('button').click(function(){
+				$('p:first').hide(1000)
+			})
+		</script>
+	</section>
+</section>
+<!-- ----------------------------------fin del ejercicio1------------------------------------------ -->
+<!-- ----------------------------------ejercicio 2----------------------------------------- -->
+<section id="ej2">
+	<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">2. Crea las siguientes listas y un botón. </h2>
+	<ol>
+		<li>Tortilla</li>
+		<li>Jamón</li>
+		<li>Queso</li>
+	</ol>
+	<br>
+	<ol>
+		<li>Coca Cola</li>
+		<li>Leche</li>
+		<li>Té</li>
+	</ol>
+	<button id="botonej2">Click</button>
+	<section id="ej2_1">
+		<h3>Oculta el primer elemento de la primera lista</h3>
+		<button class="ej2_1">Click</button>
+		<script>
+			$('.ej2_1').click(function(){
+				$('li:first').hide()
+			})
+		</script>
+	</section>
+	<section id="ej2_2">
+		<h3>Oculta los primeros elementos de las dos listas</h3>
+		<button class="ej2_2">Click</button>
+		<script>
+			$('.ej2_2').click(function(){
+				$('li:first-child').hide() 
+			})
+		</script>
+	</section>
+	<section id="ej2_3">
+		<h3>Oculta los elementos pares de la primera lista</h3>
+		<button class="ej2_3">Click</button>
+		<script>
+			$('.ej2_3').click(function(){
+				$('ol:first-of-type li:nth-of-type(even)').hide()
+			})
+		</script>
+	</section>
+	<section id="ej2_4">
+		<h3>Oculta los elementos impares de las dos listas</h3>
+		<button class="ej2_4">Click</button>
+		<script>
+			$('.ej2_4').click(function(){
+				$('ol > li:nth-of-type(odd)').hide()
+			})
+		</script>
+	</section>
+	<section id="ej2_5">
+		<h3>Oculta el botón en 2 segundos.</h3>
+		<button class="ej2_5">Click</button>
+		<script>
+			$('.ej2_5').click(function(){
+				$('#botonej2').hide(2000)
+			})
+		</script>			
+	</section>
+</section>
+<!-- ----------------------------------------fin ejercicio 2-------------------------------- -->
+<!-- -----------------------------------ejercicio 3------------------------------------- -->
+<section id="ej3">
+	<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">3. Crea un documento con un par de enlaces mediante el atributo href, uno que vaya a la web de clase, el otro que vaya a Google.es: y, con un botón:</h2>
+	<a href="https://virtual.staformacion.org/">Staf</a><br>
+	<a href="https://www.google.com">Google</a><br>			
+	<section id="ej3_1">
+		<h3>Oculta ambos enlaces.</h3>
+		<button class="ej3_1">Click</button>		
+		<script>
+			$('.ej3_1').click(function(){
+				$('a').hide()
+			})
+		</script>
+	</section>
+	<section id="ej3_2">
+		<h3>Oculta el enlace de la web de clase en 1 segundo y medio. </h3>
+		<button class="ej3_2">Click</button>
+		<script>
+			$('.ej3_2').click(function(){
+				$('a:first').hide(1500)
+			})
+		</script>	
+	</section>
+</section>
+<!-- ----------------------------------------------- fin ejercicio 3 ----------------------------- -->
+<!-- ------------------------------------- ejercicio 4 --------------------------------- -->
+<section id="ej4">
+	<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">4. Crea un documento con dos enlaces y dos botones. El primer enlace  usará el atributo target="_blank" y el otro no. Cada botón debe ocultar uno de los enlaces en función de su atributo target.</h2>
+	<a href="https://virtual.staformacion.org/" target="_blank">Staf</a><br>
+	<button class="ej4_1">Click</button><br>
+	<a href="https://www.google.com">Google</a><br>
+	<button class="ej4_1_1">Click</button>
+	<script>
+		$('.ej4_1').click(function(){
+			$('target').hide()
+		})
+		$('.ej4_1_1').click(function(){
+			$('a:last').hide()
+		})
+	</script>
+</section>
+<!-- ----------------------------------------------- fin ejercicio 4 ----------------------------- -->
+<!-- ------------------------------------- ejercicio 5 --------------------------------- -->
+<section id="ej5">
+	<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">5. Crea un documento con dos párrafos y un botón. Al hacer clic en el botón el primer párrafo se ha de ocultar en 3 segundos y el segundo en 5.</h2>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis aperiam dolorum officia, consectetur iure officiis cum ducimus veniam totam pariatur suscipit nam quas laborum tempora incidunt sit fugit. Quas, consectetur.</p>
+	<p>Qui odio nobis laboriosam facere dolore non placeat aliquam, doloribus temporibus commodi quidem adipisci molestiae quos cumque cupiditate numquam deleniti ratione nesciunt porro eaque. Corrupti, enim at officiis molestias in.</p>
+	<button class="ej5_1">Click</button>
+	<script>
+		$('.ej5_1').click(function(){
+			$('#ej5 p:first').hide(3000)
+			$('#ej5 p:last').hide(5000)
+		})
+	</script>
+</section>
+<!-- ----------------------------------------------- fin ejercicio 5 ----------------------------- -->
+<!-- ------------------------------------- ejercicio 6 --------------------------------- -->
+<section id="ej6">
+	<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">6. Crear un documento con una tabla. Poner el fondo de las filas pares en azúl claro (usar el método .css("background-color","var(--cuaternario)"). A continuación poner el fondo de las filas impares en azúl grisáceo ..css("background-color","var(--secundario")</h2>
+	<table border>
+		<tr>
+			<td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, nobis!</td>
+			<td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, omnis.</td>
+		</tr>
+		<tr>
+			<td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia, perspiciatis!</td>
+			<td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat, ab.</td>
+		</tr>
+		<tr>
+			<td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, numquam?</td>
+			<td>Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur, magnam.</td>
+		</tr>
+	</table>
+	<button class="ej6_1">click</button>
+	<script>
+		$('.ej6_1').click(function(){
+			$('tr:odd').css("background-color","var(--cuaternario)")
+			$('tr:even').css("background-color","var(--secundario)")
+		})
+	</script>		
+</section>
+<!-- ----------------------------------------------- fin ejercicio 6 ----------------------------- -->
+<!-- ------------------------------------- ejercicio 7 --------------------------------- -->
+<section id="ej7">
+	<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">7. Crear un documento con un párrafo, el cual se oculte al clicar dos veces sobre él.</h2>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, minus reprehenderit? Dolorum officia provident unde. Ut doloremque, adipisci sit, cum quos quam, ullam quasi laudantium veritatis dolores quia assumenda excepturi?</p>
+	<script>
+		$('#ej7 p').dblclick(function(){
+			$('#ej7 p').hide()
+		})
+	</script>		
+</section>
+<!-- ----------------------------------------------- fin ejercicio 7 ----------------------------- -->
+<!-- ------------------------------------- ejercicio 8 --------------------------------- -->
+<section id="ej8">
+	<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">8. Mediante jQuery, crear un documento con un párrafo tal que aparezca un aviso alert(“has hecho clic en el párrafo”) cuando se presiona el botón izquierdo del ratón sobre él.</h2>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci illo, beatae facere dignissimos eum, ut veniam voluptates et natus maxime ducimus architecto aperiam aliquam facilis nostrum, deleniti esse possimus, blanditiis.</p>
+	<script>
+		$('#ej8 p').click(function(){
+			alert('Has hecho clic en el párrafo')
+		})
+	</script>
+</section>
+<!-- ----------------------------------------------- fin ejercicio 8 ----------------------------- -->
+<!-- ------------------------------------- ejercicio 9 --------------------------------- -->
+<section id="ej9">
+	<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">9. Crea un título, un subtítulo y tres párrafos. Utiliza el método hover() para lanzar un mensaje cuando nos posicionamos sobre el último párrafo y otro cuando salgamos de él.</h2>
+	<h1>Título</h1>
+	<h2>Subtítulo</h2>
+	<p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. A velit, deserunt autem distinctio at modi aliquam perspiciatis ipsum eveniet voluptate officiis veniam vel minima. Molestias suscipit maxime, sint quibusdam libero.</p>
+	<p>Consequuntur sunt est quasi unde ex sint veritatis eaque, odit, deserunt corporis magni maiores harum, iste cupiditate delectus? Quisquam repudiandae quam molestiae libero inventore consectetur excepturi cupiditate doloremque reiciendis saepe.</p>
+	<p>Velit nobis totam ex illo voluptatibus, mollitia deserunt aut exercitationem voluptates quisquam expedita error, iusto aliquam repellat debitis repellendus esse autem quia, eveniet quam blanditiis. Explicabo suscipit ab molestiae officia.</p>
+	<script>
+		$('#ej9 p:last').hover(function(){
+		alert('Te has posicionado sobre el último párrafo.')
+	}, function(){
+		alert('Has salido del último párrafo')
+	})
+	</script>
+</section>
+<!-- ----------------------------------------------- fin ejercicio 9 ----------------------------- -->
+<!-- ------------------------------------- ejercicio 10 --------------------------------- -->
+<section id="ej10">
+	<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">10.  Crea el siguiente formulario. Utiliza los métodos focus() y blur() para cambiar el color de dos cuadros de texto cuando posicionamos el foco y cuando lo retiramos.
+	<div id="formulario">
+		<h2 style="text-align: center;">Formulario</h2>
+		<form action="/action_page.php">
+			<label for="nombre">Nombre:</label>
+			<input type="text" name="nombre" id="nombre" placeholder="Nombre">
+			<label for="apellido">Apellido:</label>
+			<input type="text" name="apellido" id="apellido" placeholder="Apellido">
+			<label for="correo">Correo electrónico:</label>
+			<input type="email" name="correo" id="correo" placeholder="e-Mail">
+			<label for="comentario">Comenta:</label>
+			<textarea id="comentario" name="comentario"></textarea>
+			<input type="submit" value="Enviar">
+		</form>
+	</div>
+	<script>
+		$('input, textarea').focus(function(){
+			$(this).css('backgroundColor','var(--primario')
+		})
+		$('input, textarea').blur(function(){
+			$(this).css('backgroundColor','white')
+		})
+	</script>
+</section>
+<!-- ----------------------------------------------- fin ejercicio 10 ----------------------------- -->
+<!-- ------------------------------------- ejercicio 11 --------------------------------- -->
+<section id="ej11">
+	<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">11. Crea un documento con dos div con un botón y un párrafo como se ve en la siguiente imagen: </h2>
+	<div class="contenedorFlex">
+		<div class="ej_11">
+			<h3>Primer párrafo</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur quaerat doloremque atque voluptate accusantium magnam, adipisci ad, voluptatibus eligendi magni illum, minus, labore! Facilis aspernatur culpa, optio tenetur voluptas.</p>
+		</div>
+		<div class="ej_11">
+			<h3>Segundo párrafo</h3>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam tenetur quaerat doloremque atque voluptate accusantium magnam, adipisci ad, voluptatibus eligendi magni illum, minus, labore! Facilis aspernatur culpa, optio tenetur voluptas.</p>
+		</div>
+	</div>
+	<h3>A.	Pulsando el primer botón haz desaparecer el primer párrafo en 3 segundos. Pulsando el segundo botón haz desaparecer el segundo párrafo en 5 segundos. Cuando vuelvas a presionar los botones han de aparecer los párrafos correspondientes.</h3>
+	<div class="contenedorFlex">
+		<button class="start_1">Botón 1</button> 
+		<button class="start_2">Botón 2</button>
+	</div>
+	<script>
+		$('.start_1').click(function(){
+			$('.ej_11 p:first').toggle(3000)
+		})
+		$('.start_2').click(function(){
+			$('.ej_11 p:last').toggle(5000)
+		})			
+	</script>
+	<h3>B.	Haciendo doble clic sobre el primer botón haz desaparecer el segundo párrafo en 3 segundos. Si haces doble clic en el segundo botón ha de desaparecer el primer párrafo en 5 segundos. Cuando vuelvas a hacer doble clic sobre los botones han de aparecer los párrafos correspondientes.</h3>
+	<div class="contenedorFlex">
+		<button class="start_3">Botón 1</button> 
+		<button class="start_4">Botón 2</button>
+	</div>
+	<script>
+		$('.start_3').dblclick(function(){
+			$('.ej_11 p:last').toggle(3000)
+		})
+		$('.start_4').dblclick(function(){
+			$('.ej_11 p:first').toggle(5000)
+		})
+	</script>
+	<div>
+		<h2 style="border-bottom: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;"></h2>
+	</div>
+</section>
+	<!-- ----------------------------------------------- fin ejercicio 11 ----------------------------- -->
+</main>
+<footer>
+	<small>11 de Mayo de 2021</small>
+</footer>
+</body>
+</html>

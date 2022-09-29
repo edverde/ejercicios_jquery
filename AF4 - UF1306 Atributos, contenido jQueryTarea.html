@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AF2 - UF1306 Selectores y efectos 1 jQuery</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- ------------------------- animacion anclas ------------------------------------- -->
+	<script>
+		$(document).ready(function() {
+			$('a[href^="#"]').click(function() {
+		    var destino = $(this.hash);
+		    if (destino.length == 0) {
+		      destino = $('a[name="' + this.hash.substr(1) + '"]');
+		    }
+		    if (destino.length == 0) {
+		      destino = $('html');
+		    }
+		    $('html, body').animate({ scrollTop: destino.offset().top - 225 }, 1000);
+		    return false;
+		  });
+		});
+	</script>	
+	<style>
+	/*--------------------font-------------------------------------------------------------------*/
+	@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;700&display=swap');
+	/*-----------------------reset----------------------------------------------------------*/
+	*{
+		padding: 0px;
+		margin: 0px;
+		box-sizing: border-box;
+	}
+	/*-----------------------------------------Raíz--------------------------------------------*/
+	:root{
+		--primario:#eaece5; /*blanco roto*/
+		--secundario:#b2c2bf; /*azúl grisáceo*/
+		--terciario:#3b3a30; /*verde oscuro*/
+		--cuaternario:#c0ded9; /*verde claro*/
+	}
+	/*--------------------------------Etiquetas de título--------------------------------*/
+	h2, h3, p {
+		color:var(--terciario);
+		padding: 20px;
+		width: 80%;
+		margin:auto;
+	}
+	/*-------------------------------Enlaces--------------------------------------------*/
+	a{
+		color:var(--terciario);
+
+	}
+	a:hover{
+		
+		color:#0d0d0d;
+	}
+	/*-----------------------------------borde h2---------------------------------*/
+	.borde {
+		border-top: 1px solid var(--terciario); 
+		width: 80%; 
+		margin: auto; 
+		padding: 40px;
+	}
+	/*--------------------------------- listas ---------------------------------- */
+	ol{
+		width: 30px; 
+		margin: auto;
+		font-size: 1rem;		
+	}
+	/*------------------------------------tablas----------------------------------------*/
+	table{
+		width: 80%;
+		margin:auto;
+		border: 2px solid var(--terciario);
+		border-collapse: collapse;
+	}
+	td {
+		padding: 20px;
+	}	
+	/*-------------------------------boton----------------------------------------*/
+	button {
+		width: 100px;
+		display: inline-block;
+		padding:10px;
+		border-radius: 4px;
+		background-color: var(--terciario);
+		cursor: pointer;
+		text-decoration: none;
+		text-align: center;
+		margin:20px auto 20px;
+		border: none;
+		color:var(--primario);
+	}
+	button:hover{
+		background-color: #0d0d0d;
+		transition: 1s;
+	}
+	/*------------------------------body---------------------------------*/
+	body{
+		font-family: 'Arimo', sans-serif;
+		background-color: var(--secundario);
+		text-align: center;	
+	}
+	/*------------------------header----------------------------------*/
+	header{
+		background-color: var(--terciario);
+		padding: 20px 20px 0px;
+		color: #f0f0f0;
+		position: sticky;
+		top:0;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		z-index: 1000;
+	}
+	.fotoEd{		  	
+    	border-radius:50px;
+	}
+	/*---------------------------------------menu------------------------------*/
+	#menu {	
+		background-color: var(--terciario);
+		position: sticky;
+		top: 170px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 20px;	
+		z-index: 1000;			
+	}
+	#menu a{
+		text-decoration: none;
+		color:var(--primario);
+		display: block;
+		width: 100px;
+		border:1px solid var(--primario);
+		margin-right: 10px;
+	}
+	#menu a:hover{
+		background-color: #0d0d0d;
+		transition: 1s;
+	}
+	/*------------------------main------------------------------------------------*/
+	main{
+		width: 80%;
+		margin: auto;
+		padding: 60px 0px 60px;	
+		background-color: var(--primario);			
+		/*background-image: url(img/fondo.jpg);
+		background-attachment: scroll;
+		background-size: cover;*/
+	}	
+	/*----------------------------- ejercicio 9 ---------------------------------------------*/
+	.cuadrado{
+		width:300px; 
+		height: 200px;
+		margin: auto;
+		padding: 10px;
+		border-radius: 10px;
+		background-color: var(--cuaternario);
+		border: 3px solid var(--terciario);
+	}
+	/*----------------------------------------ejercicio 14--------------------------------*/
+	.oculto{
+		overflow: hidden;
+	}
+	/*------------------------------------ footer ----------------------------------------------*/
+	footer {
+		padding: 80px;
+		background-color: var(--terciario);
+		color:var(--primario);
+	}
+	</style>
+</head>
+<body>
+	<!-- --------------------------------------------header-------------------------------------- -->
+<header>
+	<img src="img/logo.png" alt="logoJquery" width="150">
+	<h1>AF4 - UF1306 Atributos, contenido jQueryTarea</h1>
+	<div>
+		<figure>
+		<img src="img/ed.jpg" alt="alumno" class="fotoEd" width="100">
+		<figcaption>Eduard Valls Roca</figcaption>
+		</figure>
+		<!-- <span class="icon_burger">&#9776;</span> -->
+	</div>
+</header>
+<!-- --------------------------------Navegador------------------------------- -->
+<nav id="menu">
+	<a href="#ej1">EJ.1</a>
+	<a href="#ej2">EJ.2</a>
+	<a href="#ej3">EJ.3</a>
+	<a href="#ej4">EJ.4</a>
+	<a href="#ej5">EJ.5</a>
+	<a href="#ej6">EJ.6</a>
+	<a href="#ej7">EJ.7</a>
+	<a href="#ej8">EJ.8</a>
+	<a href="#ej9">EJ.9</a>
+	<a href="#ej10">EJ.10</a>
+	<a href="#ej11">EJ.11</a>
+	<a href="#ej12">EJ.12</a>	
+	<a href="#ej13">EJ.13</a>	
+	<a href="#ej14">EJ.14</a>		
+</nav>
+<main>	
+	<!-- ---------------------------------- ejercicio 1 ------------------------------------------ -->
+	<section id="ej1">
+		<h2>1. Crear un documento con cuatro botones, un input type=”text”,  un enlace a http://www.thehobbit.com/ y un párrafo. tal que,</h2>
+		<h3>○     al hacer clic en el primer botón se obtenga una alerta con el contenido de texto del párrafo indicado.<br>
+			○      Al hacer clic en el segundo botón se debe obtener una alerta con el contenido incluyendo las marcas HTML del párrafo.<br>
+			○     Al hacer clic en el tercer botón, se debe obtener una alerta con el valor del cuadro de texto.<br>
+
+			○     Al hacer clic en el cuarto botón, se debe obtener una alerta con el contenido del enlace.</h3>
+		<button class="btn1_1">Botón 1</button>
+		<button class="btn1_2">Botón 2</button>
+		<button class="btn1_3">Botón 3</button>
+		<button class="btn1_4">Botón 4</button><br>			
+		<p> "Tres anillos para los Reyes Elfos bajo el cielo.Siete para los <strong>Señores Enanos</strong> en casas de piedra. Nueve para los Hombres Mortales condenados a morir.Uno para el Señor Oscuro, sobre el trono oscuro. Un Anillo para gobernarlos a todos. Un <strong>anillo</strong> para encontrarlos, un <a href="http://www.thehobbit.com/">Anillo</a> para atraerlos a todos y atarlos en las tinieblas en la Tierra de Mordor donde se extienden las <input type="text" value="Sombras">."</p>
+		<script>
+			$('.btn1_1').click(function(){
+				alert($('#ej1 > p').text())
+			})
+			$('.btn1_2').click(function(){
+				alert($('#ej1 > p').html())
+			})
+			$('.btn1_3').click(function(){
+				alert($('#ej1 input').attr('value'))
+			})
+			$('.btn1_4').click(function(){
+				alert($('#ej1 a').attr('href'))
+			})
+		</script>
+	</section>
+	<section id="ej2">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">2. Crea dos párrafos lorem y un input type=”text”. Mediante tres eventos de clic asociados a tres botones, “Añade Text”, “Añade HTML” y “Añade Value” establecer el texto de un primer párrafo a “Hola Mundo ”, establecer el texto de un segundo  párrafo a “Hola Mundo” en negrita y establecer el valor de un cuadro de texto a “Hola Mundo”.</h2>
+		<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione, eius, doloribus. Distinctio dignissimos dolorum, enim voluptate cumque? Commodi atque, enim recusandae ex, sunt culpa, aspernatur alias, accusamus voluptatibus vitae illum?</p>
+		<p>Lorem, ipsum dolor sit amet, consectetur adipisicing elit. Suscipit aliquam ipsam ducimus! Explicabo, tempore harum veniam eum cumque modi cupiditate nisi voluptatibus, reiciendis vitae excepturi quisquam, iure nesciunt eos laboriosam.</p>
+		<input type="text" value=""><br>
+		<button class="btn2_1">Botón 1</button>
+		<button class="btn2_2">Botón 2</button>
+		<button class="btn2_3">Botón 3</button>
+		<script>
+			$('.btn2_1').click(function(){
+				$('#ej2 p:first').text('Hola Mundo')
+			})
+			$('.btn2_2').click(function(){
+				$('#ej2 p:last').html('<strong>Hola Mundo</strong>')
+			})
+			$('.btn2_3').click(function(){
+				$('#ej2 > input').val("Hola Mundo")
+			})
+		</script>
+	</section>
+	<section id="ej3">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">3. Cambia los atributos href y title de un enlace a <a href="http://www.google.es" id="direccion">Google</a>, mediante un evento asociado a un botón. Ahora el href será "http://www.google.es/intl/es/earth/index.html" y el título será “Google Earth”</h2>
+		<button class="btn3_1">Click</button>
+		<script>
+			$('.btn3_1').click(function(){
+				$('#direccion').text('Google Earth')
+				$('#ej3 a').attr('href','http://www.google.es/intl/es/earth/index.html')
+			})
+		</script>
+	</section>
+	<section id="ej4">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">4. Cambia un enlace a <a href="http://google.es">http://google.es</a> mediante un evento asociado a un botón, en el que el nuevo enlace introducido sea /intl/es/earth/index.html</h2>
+		<button class="btn4_1">Click</button>
+		<script>
+			$('.btn4_1').click(function(){
+				$('#ej4 a').text('http://www.google.es/intl/es/earth/index.html')
+				$('#ej4 a').attr('href','http://www.google.es/intl/es/earth/index.html')
+			})
+		</script>
+	</section>
+	<section id="ej5">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">5. Añadir mediante un botón el texto “Texto añadido”  al final de un párrafo lorem.  Ahora, mediante otro botón, añade al principio del  párrafo lorem el texto “Texto añadido al principio”</h2>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quasi iste excepturi dolore a ratione ipsam distinctio, ducimus tempore cum est? Aperiam dolor, exercitationem doloribus voluptatibus quisquam omnis corrupti repellat.</p>
+		<button class="btn5_1">Añade al principio</button>
+		<button class="btn5_2">Añade al final</button>
+		<script>
+			$('.btn5_1').click(function(){
+				$('#ej5 p').prepend('Texto añadido al principio. ')
+			})
+			$('.btn5_2').click(function(){
+				$('#ej5 p').append(' Texto añadido al final. ')
+			})
+		</script>
+	</section>
+	<section id="ej6">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;"> 6.  Añadir mediante un botón el ítem de lista “Item añadido”  al final de una lista de 3 items (item1, item2 item3).  Ahora, mediante otro botón, añade el item de lista “Primer item” al principio.</h2>
+		<ol>
+			<li>item1</li>
+			<li>item2</li>
+			<li>item3</li>
+		</ol>
+		<button class="btn6_1">Añadir item al principio</button>
+		<button class="btn6_2">Añadir item al final</button>
+		<script>
+			$('.btn6_1').click(function(){
+				$('#ej6 li:first').before('<li>item</li>')
+			})
+			$('.btn6_2').click(function(){
+				$('#ej6 li:last').after('<li>item</li>')
+			})
+		</script>
+	</section>
+	<section id="ej7">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">7. Crear un documento con un párrafo, mediante un evento asociado a un botón debemos añadirle (indiferente principio o final) un párrafo creado con HTML.</h2>
+		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque consequatur, molestias tempore doloremque voluptas nulla aperiam nemo, nisi cupiditate amet dicta quasi eum eos quaerat magnam magni expedita sed ad.</p>
+		<button class="btn7_1">Añade un párrafo</button>
+		<script>
+			$('.btn7_1').click(function(){
+				$('#ej7 p').after('<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel incidunt rem facilis, velit distinctio corporis nemo voluptas ad cum similique voluptate modi eum repudiandae accusantium quos aperiam repellendus consequatur libero.</p>')
+			})
+		</script>
+	</section>
+	<section id="ej8">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">8. Insertar debajo de la foto la frase “I Love jQuery” . Utilizar un evento asociado a un botón y el método after.</h2>
+		<figure>
+			<img src="img/kawai.gif" alt="kawai" width="200" style="margin:20px">
+		</figure>
+		<button class="btn8_1">Descubre el mensaje</button>
+		<script>
+			$('.btn8_1').click(function(){
+				$('#ej8 img').after('<figcaption style="font-size:3rem">I Love jQuery</figcaption>')
+				$('figcaption').hide().fadeIn(1000)				
+			})
+
+		</script>
+	</section>
+	<section id="ej9">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">9. Crea un div (300 x 200) que contenga un par de párrafos. Borra dicho div con el método remove() mediante un evento asociado a un botón.</h2>
+		<div class="cuadrado"> 
+			<p>Lorem ipsum dolor, sit amet.</p>
+			<p>Lorem ipsum, dolor sit amet.</p>
+		</div>
+		<button class="btn9_1">Borrar</button>
+		<script>
+			$('.btn9_1').click(function(){
+				$('#ej9 .cuadrado').remove()
+			})
+		</script>
+	</section>
+	<section id="ej10">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">10. Crea un tag div (300 x 200) que contenga un par de párrafos. Borra dichos párrafos con el método empty() como gestor de un evento asociado a un botón.</h2>
+		<div class="cuadrado"> 
+			<p>Lorem ipsum dolor, sit amet.</p>
+			<p>Lorem ipsum, dolor sit amet.</p>
+		</div>
+		<button class="btn9_1">Borrar</button>
+		<script>
+			$('.btn9_1').click(function(){
+				$('#ej10 .cuadrado').empty()
+			})
+		</script>
+	</section>
+	<section id="ej11">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">11. Crear un documento con dos párrafos, uno de ellos con el atributo class=”italic”. Borrar únicamente dicho párrafo mediante un evento asociado a un botón.</h2>
+		<p class="italic">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati tenetur iusto quae recusandae voluptatibus, eaque sunt dignissimos! Consectetur debitis ut suscipit ducimus tenetur earum iusto, eum atque fugit rerum amet!</p>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, quae velit quaerat. Accusamus minus dignissimos voluptas hic, illum illo, molestiae facilis modi, veniam optio, quam aliquid quae quia porro suscipit.</p>
+		<button class="btn11_1">Click</button>
+		<script>
+			$('.btn11_1').click(function(){
+				$('.italic').remove()
+			})
+		</script>
+	</section>
+	<section id="ej12">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;"> 12.- Crea una lista no ordenada de los alumnos de clase. Cuando hagas clic en un botón el primer alumno ha de pasar al último lugar.</h2>
+		<ul style="width: 100px; margin: auto;">
+			<li>Antonio</li>
+			<li>Ana Ruth</li>
+			<li>Carolina</li>
+			<li>Dani</li>
+			<li>Elsa</li>
+			<li>Joel</li>
+			<li>Juan Ángel</li>
+			<li>Justina</li>
+			<li>Raúl D.</li>
+			<li>Raúl M.</li>
+			<li>Saori</li>
+			<li>Marta</li>
+			<li>Juan Carlos</li>
+			<li>María</li>
+			<li>Eddie</li>
+		</ul>
+		<button class="btn12_1">Click</button>
+		<script>
+			$('.btn12_1').click(function(){
+				$('#ej12 li:first').insertAfter('#ej12 li:last')
+			})
+		</script>
+	</section>
+	<section id="ej13">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">13.- Crea una lista con 5 letras (A, B, C, D, E). Crea un botón tal que al hacer clic lá última letra aparezca en primer lugar.</h2>
+		<ul style="width: 10px; margin: auto;">
+			<li>A</li>
+			<li>B</li>
+			<li>C</li>
+			<li>D</li>
+			<li>E</li>
+		</ul>
+		<button class="btn13_1">Click</button>
+		<script>
+			$('.btn13_1').click(function(){
+				$('#ej13 li:last').insertBefore('#ej13 li:first')
+			})
+		</script>
+	</section>
+	<section id="ej14">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;"> 14.- Crea una galería con imágenes de animales que puedes encontrar en pixabay.com parecidas a la de la imagen siguiente. Al darle clic a los botones la imagen ha de cambiar, usa para ello los métodos insertAfter() e insertBefore()</h2>
+		<ul style="text-decoration: none; margin: auto; width: 300px; height: 300px; overflow: hidden;" >
+			<li><img src="img/img1.gif" alt=""></li>
+			<li><img src="img/img2.gif" alt=""></li>
+			<li><img src="img/img3.gif" alt=""></li>
+			<li><img src="img/img4.gif" alt=""></li>
+			<li><img src="img/img5.gif" alt=""></li>
+		</ul>
+		<button class="btn_izq" style="font-size: 2rem;">&#x2190;</button>
+		<button class="btn_der" style="font-size: 2rem;">&#x2192;</button>
+		<script>
+			// $('.btn_izq').click(function(){
+			// 	$('#ej14 li:first').insertAfter('#ej14 li:last').hide().fadeIn(500)				
+			// })
+			// $('.btn_der').click(function(){
+			// 	$('#ej14 li:last').insertBefore('#ej14 li:first').hide().fadeIn(500)				
+			// })
+
+
+			$('.btn_izq').click(function(){
+				$('#ej14 li:first').insertAfter('#ej14 li:last').hide().fadeIn(500)				
+			})
+			$('.btn_der').click(function(){
+				$('#ej14 li:last').insertBefore('#ej14 li:first').hide().fadeIn(500)				
+			})
+		</script>
+	</section>
+</main>
+<footer>
+	<small>12 de Mayo de 2021</small>
+</footer>
+</body>
+</html>

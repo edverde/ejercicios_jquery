@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AF2 - UF1306 Selectores y efectos 1 jQuery</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- ------------------------- animacion anclas ------------------------------------- -->
+	<script>
+		$(document).ready(function() {
+			$('a[href^="#"]').click(function() {
+		    var destino = $(this.hash);
+		    if (destino.length == 0) {
+		      destino = $('a[name="' + this.hash.substr(1) + '"]');
+		    }
+		    if (destino.length == 0) {
+		      destino = $('html');
+		    }
+		    $('html, body').animate({ scrollTop: destino.offset().top - 225 }, 1000);
+		    return false;
+		  });
+		});
+	</script>	
+	<style>
+	/*--------------------font-------------------------------------------------------------------*/
+	@import url('https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;700&display=swap');
+	/*-----------------------reset----------------------------------------------------------*/
+	*{
+		padding: 0px;
+		margin: 0px;
+		box-sizing: border-box;
+	}
+	/*-----------------------------------------Raíz--------------------------------------------*/
+	:root{
+		--primario:#eaece5; /*blanco roto*/
+		--secundario:#b2c2bf; /*azúl grisáceo*/
+		--terciario:#3b3a30; /*verde oscuro*/
+		--cuaternario:#c0ded9; /*verde claro*/
+	}
+	/*--------------------------------Etiquetas de título--------------------------------*/
+	h2, h3, p {
+		color:var(--terciario);
+		padding: 20px;
+		width: 80%;
+		margin:auto;
+	}
+	/*--------------------------------- listas ---------------------------------- */
+	ol{
+		width: 90px; 
+		margin: auto;
+		font-size: 1rem;		
+	}
+	/*------------------------------------tablas----------------------------------------*/
+	table{
+		width: 80%;
+		margin:auto;
+		border: 2px solid var(--terciario);
+		border-collapse: collapse;
+	}
+	td {
+		padding: 20px;
+	}	
+	/*-------------------------------boton----------------------------------------*/
+	button {
+		width: 100px;
+		display: inline-block;
+		padding:10px;
+		border-radius: 4px;
+		background-color: var(--terciario);
+		cursor: pointer;
+		text-decoration: none;
+		text-align: center;
+		margin:20px auto 20px;
+		border: none;
+		color:var(--primario);
+	}
+	button:hover{
+		background-color: #0d0d0d;
+		transition: 1s;
+	}
+	/*------------------------------body---------------------------------*/
+	body{
+		font-family: 'Arimo', sans-serif;
+		background-color: var(--secundario);
+		text-align: center;	
+	}
+	/*------------------------header----------------------------------*/
+	header{
+		background-color: var(--terciario);
+		padding: 20px 20px 0px;
+		color: #f0f0f0;
+		position: sticky;
+		top:0;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		z-index: 1000;
+	}
+	.fotoEd{		  	
+    	border-radius:50px;
+	}
+	/*---------------------------------------menu------------------------------*/
+	#menu {	
+		background-color: var(--terciario);
+		position: sticky;
+		top: 170px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 20px;	
+		z-index: 1000;			
+	}
+	#menu a{
+		text-decoration: none;
+		color:var(--primario);
+		display: block;
+		width: 100px;
+		border:1px solid var(--primario);
+		margin-right: 10px;
+	}
+	#menu a:hover{
+		background-color: #0d0d0d;
+		transition: 1s;
+	}
+	/*------------------------main------------------------------------------------*/
+	main{
+		width: 80%;
+		margin: auto;
+		padding: 60px 0px 60px;	
+		/*background-color: var(--primario);			*/
+		background-image: url(img/fondos.jpg);
+		background-attachment: scroll;
+		background-size: cover;
+	}	
+	/*----------------------------- ejercicio 1 ---------------------------------------------*/
+	.contenedor_ej1 {
+		
+		background-image: url(img/fondos.jpg);
+		background-attachment: scroll;
+		background-size: cover;
+		width: 60%;
+		margin:auto;
+		padding: 100px;
+		position: relative;
+		border-radius: 20px;
+
+	}
+	.verde{
+		height: 100px;
+		width: 100px;
+		border-radius: 50% ;
+		background-color: green;
+		border:3px solid black;
+		position: absolute;
+		left: 15%;
+		top: 25%;
+	}
+	.rojo {
+		height: 100px;
+		width: 100px;
+		border-radius: 50% ;
+		background-color: red;
+		border:3px solid black;
+		position: absolute;
+		left: 45%;
+		top: 25%;
+	}
+	.azul{
+		height: 100px;
+		width: 100px;
+		border-radius: 50%;
+		background-color: blue;
+		border:3px solid black;
+		position: absolute;
+		left:75%;
+		top: 25%;
+	}
+	/*------------------------------------------ejercicio 2--------------------------------------*/
+	.contenedorEj2{
+		width: 60%;
+		margin: auto;
+		background-color: var(--secundario);
+		
+	}
+	.contenedorEj2 h1,.contenedorEj2 h2 {
+		color:var(--primario);
+		background-color: var(--terciario);
+		width:100%;
+		margin: auto;
+		padding: 10px;
+	}
+	/*------------------------------------- ejercicio 3 -------------------------------------*/
+	.contenedor_animado {
+		position: relative;		
+		width:100px;
+		margin: auto;
+	}
+	/*----------------------------------------ejercicio 4---------------------------------------------*/
+	.contenedor_cuadrado {
+		width: 100px;
+		height: 100px;
+		background-color: var(--secundario);
+		border:3px solid var(--terciario);
+		margin: auto;
+	}
+	/*----------------------------------------ejercicio 4---------------------------------------------*/
+	.cuadro {
+		width: 100px;
+		height: 100px;
+		background-color: var(--secundario);
+		border:3px solid var(--terciario);
+		margin: auto;
+		position:relative;
+	
+
+	}
+	/*--------------------------------------- ejercicio 6 ----------------------------------------------*/
+	.miniweb{
+		width: 60%;
+		margin: auto;
+		border:3px solid var(--terciario);
+	}
+	/*-------EJ 6 icono burger-----*/
+	.icon_burger{
+		font-size: 2rem;
+		color:var(--primario);
+		cursor: pointer;
+		user-select: none;
+
+	}
+	.icono_cerrar{
+		color:var(--primario);
+		margin-bottom: 20px;
+		cursor: pointer;
+		user-select: none;
+	}
+	/*------ menu burger ------------------*/
+	.menu {
+		background-color: rgba(59,58,48,.9);
+		position: fixed;
+		width: 100%;
+		top:0;
+		right: -100%;
+		bottom:0;
+		text-align: center;
+		padding: 60px 0px;
+		z-index: 2000;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		font-size: 2rem;
+	}
+	.menu > a {
+		text-decoration: none;
+		color: var(--primario);
+
+	}
+
+	/*------------------------------------ footer ----------------------------------------------*/
+	footer {
+		padding: 80px;
+		background-color: var(--terciario);
+		color:var(--primario);
+	}
+	</style>
+</head>
+<body>
+	<!-- --------------------------------------------header-------------------------------------- -->
+<header>
+	<img src="img/logo.png" alt="logoJquery" width="150">
+	<h1>AF3 - UF1306 Efectos 2 jQuery</h1>
+	<div>
+		<figure>
+		<img src="img/ed.jpg" alt="alumno" class="fotoEd" width="50">
+		<figcaption>Eduard Valls Roca</figcaption>
+		</figure>
+		<span class="icon_burger">&#9776;</span>
+	</div>
+</header>
+<!-- --------------------------------Navegador------------------------------- -->
+<nav id="menu">
+	<a href="#ej1">EJ.1</a>
+	<a href="#ej2">EJ.2</a>
+	<a href="#ej3">EJ.3</a>
+	<a href="#ej4">EJ.4</a>
+	<a href="#ej5">EJ.5</a>
+	<a href="#ej6">EJ.6</a>
+	<!-- <a href="#ej7">EJ.7</a>
+	<a href="#ej8">EJ.8</a>
+	<a href="#ej9">EJ.9</a>
+	<a href="#ej10">EJ.10</a>
+	<a href="#ej11">EJ.11</a>	 -->
+</nav>
+<main>	
+	<!-- ---------------------------------- ejercicio 1 ------------------------------------------ -->
+	<section id="ej1">
+		<h2>1.- Crea un contenedor con una imagen de fondo que contenga 3 div redondos de colores verde, rojo y azul. Crea un boton y haz lo siguiente:</h2>
+		<div class="contenedor_ej1">
+			<div class="verde"></div>
+			<div class="rojo"></div>
+			<div class="azul"></div>
+		</div>
+		<section class="ej1_a">
+			<h3>Al hacer click al primer botón que quite la opacidad de los tres div mediante el método  fadeOut(). El primer fadeOut() ejecútalo sin parámetros, el segundo de manera lenta y el tercero en cinco segundos.</h3>
+			<button class="boton1_a">Click</button>
+			<script>
+				$('.boton1_a').click(function(){
+					$('.verde').fadeOut()
+					$('.rojo').fadeOut('slow')
+					$('.azul').fadeOut(5000)
+				})
+			</script>
+		</section>
+		<section class="ej1_b">
+			<h3>Al hacer click al segundo botón que agregue opacidad a los tres div mediante el método fadeIn(). El primer fadeIn() ejecútalo sin parámetros, el segundo de manera lenta y el tercero en cinco segundos.</h3>
+			<button class="boton1_b">Click</button>
+			<script>
+				$('.boton1_b').click(function(){
+					$('.verde').fadeIn()
+					$('.rojo').fadeIn('slow')
+					$('.azul').fadeIn(5000)
+				})
+			</script>
+		</section>
+		<section class="ej1_c">
+			<h3>Al hacer clic con el tercer botón que agregue o quite la opacidad de tres elementos div mediante el método fadeToggle(). El primer fadeToggle() ejecútalo sin parámetros, el segundo de manera lenta y el tercero en tres milisegundos.</h3>
+			<button class="boton1_c">Click</button>
+			<script>
+				$('.boton1_c').click(function(){
+					$('.verde').fadeToggle()
+					$('.rojo').fadeToggle('slow')
+					$('.azul').fadeToggle(3000)
+				})
+			</script>			
+		</section>
+		<section class="ej1_d">
+			<h3>Cuando hagas clic sobre el círculo verde éste se ha de poner a un 50% de opacidad en 2 segundos, para ello usa el método fadeTo(). 
+			Cuando hagas clic en el círculo rojo éste se ha de poner a un 80% de opacidad de forma rápida. 
+			Cuando hagas clic en el círculo azul éste se ha de poner con una opacidad del 15% en 5 segundos.</h3>
+			<script>
+				$('.verde').click(function(){
+					$(this).fadeTo(2000, 0.5)
+				})
+				$('.rojo').click(function(){
+					$(this).fadeTo('fast',0.8)
+				})				
+				$('.azul').click(function(){
+					$(this).fadeTo(5000,.15)
+				})
+			</script>
+		</section>		
+	</section>
+	<!-- ------------------------------------------------------- ejercicio 2 ------------------------------------ -->
+	<section id="ej2">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">2.- Crea un documento con un título, un subtítulo y un párrafo,</h2>
+		<div class="contenedorEj2">
+			<h1>Título</h1>
+			<h2>Subtítulo</h2>
+			<p>Lorem, ipsum dolor sit, amet consectetur adipisicing elit. Officiis, sapiente! Officiis minus mollitia, cumque facilis in ex possimus iusto voluptatibus quae reiciendis nulla molestias accusamus nostrum repudiandae hic voluptatum enim.</p>
+		</div>
+		<section class="ej2_a">
+			<h3>Haz que se oculte el párrafo mediante el método slideUp() al hacer clic en el título..</h3>
+			<h3>Haz que se muestre el párrafo mediante el método slideDown() al hacer clic en el subtítulo.</h3>
+			<h3>Haz que se muestre y se oculte el párrafo haciendo clic en el botón. Utiliza el método slideToggle().</h3>
+			<button class="boton2_a">Click</button>
+		</section>
+		<script>
+			$('#ej2 h1').click(function(){
+				$('#ej2 p').slideUp()
+			})
+			$('#ej2 h2').click(function(){
+				$('#ej2 p').slideDown()
+			})
+			$('.boton2_a').click(function(){
+				$('#ej2 p').slideToggle()
+			})
+		</script>		
+	</section>
+	<!-- ------------------------------------------------------- ejercicio 3 ------------------------------------ -->
+	<section id="ej3">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;"> 3.- Crea un programa tal que al hacer clic en un botón anime un cuadrado moviéndolo a la derecha 250px y lo agrande 150px.</h2>
+		<div class="contenedor_animado">
+			<img src="img/animacion.gif" alt="nuvekawai" width="100%" id="animacion_1">
+		</div>
+		<button class="boton3_">Click</button>
+		<script>
+			$('.boton3_').click(function(){
+				$(".contenedor_animado").animate({
+				left:'250px',
+				width:'+=300px'				
+			},2000)
+			})
+		</script>				
+	</section>
+	<!-- ------------------------------------------------------- ejercicio 4 ------------------------------------ -->
+	<section id="ej4">
+		<h2 style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">4. Crea un programa, tal que al hacer clic en un botón se aumente la altura de un cuadrado de 100px a 150px de lado en 5 segundos.</h2>
+		<div class="contenedor_cuadrado">			
+		</div>
+		<button class="boton4">Click</button>
+		<script>
+			$('.boton4').click(function(){
+				$('.contenedor_cuadrado').animate({
+					height:'150px'
+				},5000)
+			})
+		</script>
+	</section>
+	<!-- -------------------------------------------------------- ejercicio 5 ---------------------------------------- -->
+	<section id="ej5">
+		<h2  style="border-top: 1px solid var(--terciario); width: 80%; margin: auto; padding: 40px;">5.- Crear un programa, tal que al hacer clic en un botón se mueva un cuadrado 100 px a la derecha y si dentro del cuadrado pone HELLO aumente el tamaño de la letra. Incluir un botón para poder detener el efecto.</h2>
+		<div class="cuadro"><br><br><h4 style="text-align: center;">HELLO</h4></div>
+		<div class="cuadro"></div>
+		<button class="botonStart">Start</button>
+		<button class="botonStop">Stop</button>
+		<script>
+			$('.botonStart').click(function(){
+				$('.cuadro:first').animate({
+					fontSize: '1.5em',
+				},5000)
+				$('.cuadro:last').animate({
+					left:'100px'
+				},5000)
+			})		
+			$('.botonStop').click(function(){
+				$('.cuadro').stop(true, false)
+			})
+		</script>
+	</section>
+	<!-- -------------------------------------------------------- ejercicio 6---------------------------------------- -->
+	<section id="ej6">
+		<h2> 6.- Crea un menú de barras usando jQuery.</h2>
+		<nav class="menu">
+			<span class="icono_cerrar">X</span>
+			<a href="#ej1">Ejercicio 1</a>
+			<a href="#ej2">Ejercicio 2</a>
+			<a href="#ej3">Ejercicio 3</a>
+			<a href="#ej4">Ejercicio 4</a>
+			<a href="#ej5">Ejercicio 5</a>
+			<a href="#ej6">Ejercicio 6</a>
+		</nav>
+		<script>
+			$('.icon_burger').click(function(){
+				$('.menu').animate({
+					right:'0'
+				},1000)
+			})
+			$('.icono_cerrar').click(function(){
+				$('.menu').animate({
+					right:'-100%'
+				},1000)
+			})
+		</script>
+		</div>
+	</section>
+</main>
+<footer>
+	<small>12 de Mayo de 2021</small>
+</footer>
+</body>
+</html>
